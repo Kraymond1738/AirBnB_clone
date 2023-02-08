@@ -2,5 +2,5 @@
 """testing the base_model"""
 
 import unittest
-import models
+from models import base_model
 from datetime import datetime
