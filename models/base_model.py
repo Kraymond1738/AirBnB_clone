@@ -3,26 +3,13 @@ import uuid
 from datetime import datetime
 class BaseModel:
     def __init__(self):
-        self.ID = uuid.uuid4()
+        self.id = uuid.uuid4()
         current_day = datetime.now()
         self.created_at = current_day
-        self.updated_at = current_day
-
-    def getID():
-        return self.ID
-
-    def getCreated_at():
-        return self.created_at
-    def setCreated_at(created_at):
-        self.created_at = created_at
-
-    def getUpdate_at():
-        return self.updated_at
+        self.updated_at = current_day   
     
-    def setupdate_at():
-        self.updated_at = updated_at
     def __str__(self):
-        return str(self.ID) + "  "+ str(self.created_at) +"  "+ str(self.updated_at)
+        return str(self.id) + "  "+ str(self.created_at) +"  "+ str(self.updated_at)
  
     def save(self):
         current_day = datetime.now()
