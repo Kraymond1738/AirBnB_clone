@@ -18,12 +18,15 @@ class BaseModel:
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
 
-        if kwargs or kwargs =! "__class__":
-            for key, value in kwargs.item():
+        if kwargs:
+            for key, value in kwargs.items():
                  if key == "created_at" or key == "updated_at":
                      self.__dict__[key] = datetime.strptime(value, date_format)
                  else:
                      self.__dict__[key] = value
+        else:
+            self.id=str(uuid4())
+            self.created_at = datetime.now()
                     
 
     def __str__(self):
@@ -40,8 +43,8 @@ class BaseModel:
         returns a dictionary containing
         all keys/values of __dict__ of the instance
         """
-        res = self.__dict__.copy
-        res["__class"] = self.__class__.__name__
+        res = self.__dict__
+        res["__class__"] = self.__class__.__name__
         res["created_at"] = self.created_at.isoformat()
-        res["updated_at"] = self.created_at.isoformat()
+        res["updated_at"] = self.updated_at.isoformat()
         return res
