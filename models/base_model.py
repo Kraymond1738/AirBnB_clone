@@ -4,8 +4,9 @@ from datetime import datetime
 class BaseModel:
     def __init__(self):
         self.ID = uuid.uuid4()
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        current_day = datetime.now()
+        self.created_at = current_day
+        self.updated_at = current_day
 
     def getID():
         return self.ID
@@ -24,7 +25,8 @@ class BaseModel:
         return str(self.ID) + "  "+ str(self.created_at) +"  "+ str(self.updated_at)
  
     def save(self):
-        self.updated_at = datetime.now()
+        current_day = datetime.now()
+        self.updated_at = current_day.isoformat()
 
     def to_dict(self):
         return self.__dict__
