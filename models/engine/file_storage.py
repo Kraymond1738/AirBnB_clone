@@ -27,10 +27,12 @@ class FileStorage(BaseModel):
         new_object["updated_at"] = new_obj["updated_at"]
 
     def save(self):
+        """serializes __objects to the JSON file"""
         with open(self.__file_path, 'w') as f:
             json.dump(self.__objects, f)
 
     def reload(self):
+        """deserializes  JSON file to __objects"""
         if os.path.exists(self.__file_path):
             with open(self.__file_path , 'r') as f:
                 return json.load(f)
