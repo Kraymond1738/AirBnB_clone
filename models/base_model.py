@@ -3,6 +3,7 @@
 """Basemodel class and the public instance attributes"""
 from uuid import uuid4
 from datetime import datetime
+import models
 
 
 class BaseModel:
@@ -18,13 +19,14 @@ class BaseModel:
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
 
-        if kwargs or kwargs =! "__class__":
-            for key, value in kwargs.item():
-                 if key == "created_at" or key == "updated_at":
-                     self.__dict__[key] = datetime.strptime(value, date_format)
-                 else:
-                     self.__dict__[key] = value
-                    
+        if kwargs:
+            for key, value in kwargs.items():
+                if key == "created_at" or key == "updated_at":
+                    self.__dict__[key] = datetime.strptime(value, date_format)
+                else:
+                    self.__dict__[key] = value
+        else:
+            models.storage.new(self)
 
     def __str__(self):
         """define a string representation of the object"""
@@ -34,14 +36,15 @@ class BaseModel:
     def save(self):
         """updates the updated_at time"""
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """
         returns a dictionary containing
         all keys/values of __dict__ of the instance
         """
-        res = self.__dict__.copy
-        res["__class"] = self.__class__.__name__
+        res = self.__dict__
+        res["__class__"] = self.__class__.__name__
         res["created_at"] = self.created_at.isoformat()
-        res["updated_at"] = self.created_at.isoformat()
+        res["updated_at"] = self.updated_at.isoformat()
         return res
