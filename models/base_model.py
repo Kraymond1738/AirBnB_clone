@@ -13,6 +13,7 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """intializing the BaseModel class"""
+
         date_format = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid4())
         self.created_at = datetime.now()
