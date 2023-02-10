@@ -3,7 +3,7 @@
 """Basemodel class and the public instance attributes"""
 from uuid import uuid4
 from datetime import datetime
-import models
+import model import storage
 
 
 class BaseModel:
@@ -26,7 +26,7 @@ class BaseModel:
                 else:
                     self.__dict__[key] = value
         else:
-            models.storage.new(self)
+            storage.new(self)
 
     def __str__(self):
         """define a string representation of the object"""
@@ -36,14 +36,14 @@ class BaseModel:
     def save(self):
         """updates the updated_at time"""
         self.updated_at = datetime.now()
-        models.storage.save()
+        storage.save()
 
     def to_dict(self):
         """
         returns a dictionary containing
         all keys/values of __dict__ of the instance
         """
-        res = self.__dict__
+        res = self.__dict__.copy()
         res["__class__"] = self.__class__.__name__
         res["created_at"] = self.created_at.isoformat()
         res["updated_at"] = self.updated_at.isoformat()
