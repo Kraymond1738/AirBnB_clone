@@ -3,9 +3,8 @@
 import json
 import os
 import sys
-sys.path.append(models)
-import models.base_model
-
+sys.path.append('/root/AirBnB_clone/models')
+import file_storage
 class FileStorage:
     """for storage in JSON"""
     
