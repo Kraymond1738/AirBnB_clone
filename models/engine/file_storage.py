@@ -33,7 +33,7 @@ class FileStorage:
         old_dct = FileStorage.__objects.to_dict()
         new_dct = {key: old_dict[key] for key in old_dct.items()}
         with open(FileStorage__file_path, 'w') as f:
-            json.dump(new_dct,f)
+            json.dump(new_dct, f)
 
     def reload():
         """Deserialize the JSON file __file_path to __objects"""
