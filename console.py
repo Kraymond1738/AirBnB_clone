@@ -3,6 +3,12 @@
 
 import cmd
 from models.basemodel import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -23,18 +29,23 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, line):
         """
-        Creates a new instance of BaseModel, 
-        saves it (to the JSON file) 
+        Creates a new instance of BaseModel,
+        saves it (to the JSON file)
         and prints the id
         """
+        pass
 
     def do_show(self, line):
+        pass
 
     def do_detroy(self, line):
+        pass
 
     def do_all(self, line):
+        pass
 
     def do_update(self, line):
+        pass
 
 
 if __name__ == '__main__':
