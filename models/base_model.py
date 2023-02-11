@@ -4,8 +4,6 @@
 from uuid import uuid4
 from datetime import datetime
 import models
-sys.path.append('/root/AirBnB_clone/models')
-
 class BaseModel:
     """
     This contains  all the common attributes
