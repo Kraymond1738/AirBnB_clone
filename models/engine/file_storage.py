@@ -1,22 +1,17 @@
 #!/usr/bin/python3
 """serialisation and desérialisation with Json"""
-from ../base_model.py import BaseModel
+from models.base_model import BaseModel
 from uuid import uuid4
 import json
 import os.path
-class FileStorage(BaseModel):
+class FileStorage:
     """data storage class"""
-    def __init__(self):
-        """FileStorage constructor"""
-        BaseModel.__init__(self)
-        self.id = str(self.__class__.__name__) +"." + str(uuid4()) 
-        self.__file_path = ""
-        self.__objects = new BaseModel()
+    __file_path = ""
+    __objects = {}
 
     def all(self):
         """ dictionary of our attributes __objects"""
-        super.to_dict()
-        return self.to_dict()
+        return self.__objects
 
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
