@@ -27,7 +27,7 @@ Class_dict = {
 class HBNBCommand(cmd.Cmd):
     """Our AirBnB commande line interface"""
     prompt = '(hbnb)'
-    
+
     def do_quit(self, args):
         """quit the programm with command quit"""
         return True
@@ -53,7 +53,7 @@ class HBNBCommand(cmd.Cmd):
                 instance = value()
                 print(instance.id)
                 instance.save()
-    
+
     def do_show(self, args):
         args = shlex.split(args)
         if not args:
@@ -70,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
         else:
             print(storage.all()[answer])
-    
+
     def do_destroy(self, args):
         args = shlex.split(args)
         if not args:
@@ -85,7 +85,7 @@ class HBNBCommand(cmd.Cmd):
         answer = "{}.{}".format(args[0], args[1])
         storage.all().pop(answer)
         storage.save()
-    
+
     def do_all(self, args):
         args = shlex.split(args)
         all_element = storage.all()
